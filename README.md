@@ -61,16 +61,20 @@ tictactoe-aws-deployment/
 ## Description: "IAM role for TicTacToe EC2 instances with Docker"
 ## Trusted entity type: AWS service
 ## Use case: EC2
+
 ## Add permissions policies:
 ### ✅ AmazonEC2ContainerRegistryReadOnly (for ECR if needed)
 ### ✅ CloudWatchAgentServerPolicy (for monitoring)
 ### ✅ AmazonSSMManagedInstanceCore (for Systems Manager)
 
 ## Create Custom Policy for Additional Permissions (Optional)
+
 ### If you need S3 access or other services:
+
 ### Create Policy: 
-### Ploicy name: TicTacToe-EC2-CustomPolicy
-### Ploicy file: ec2-policy.json
+
+### Policy name: TicTacToe-EC2-CustomPolicy
+### Policy file: ec2-policy.json
 
 ## Via AWS CLI:
 
@@ -172,8 +176,9 @@ HTTP   TCP    80    tictactoe-alb-sg     Allow from ALB only
 
 # 6 - Create Launch Template (For Auto Scaling)
 
-## Navigate to EC2 → Launch Templates
-## Create launch template
+### Navigate to EC2 → Launch Templates
+### Create launch template
+
 ## Launch template configuration:
 
 ### Launch template name: tictactoe-lt
@@ -191,14 +196,15 @@ HTTP   TCP    80    tictactoe-alb-sg     Allow from ALB only
 ### Key: Name, Value: TicTacToe-Instance
 ### Advanced details:
 ### - IAM instance profile: TicTacToe-EC2-Role
-### User data (Bootstrap script):
+### User data (Bootstrap script)
 
 
 # 7 - Create Auto Scaling Group
 
-## Navigate to EC2 → Auto Scaling Groups
-## Click "Create Auto Scaling group"
-## Choose launch template:
+### Navigate to EC2 → Auto Scaling Groups
+### Click "Create Auto Scaling group"
+### Choose launch template:
+
 ### Auto Scaling group name: tictactoe-asg
 ### Launch template: tictactoe-lt
 ### Version: Latest
@@ -263,6 +269,7 @@ http://tictactoe-alb-123456789.us-east-1.elb.amazonaws.com
 ## Verify Health Checks
 
 ### AWS Console:
+
 #### EC2 → Target Groups → tictactoe-tg
 #### Targets tab → Check health status (should be "healthy")
 
